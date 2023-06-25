@@ -1,8 +1,16 @@
 CREATE DATABASE social_app;
 \c social_app
 
+CREATE TABLE users(
+  id SERIAL PRIMARY KEY,
+  name TEXT,
+  email TEXT,
+  password_digest TEXT
+);
+
+
 CREATE TABLE posts (
-  id INT PRIMARY KEY AUTO_INCREMENT,
+  id SERIAL PRIMARY KEY,
   user_id INT,
   content TEXT,
   location TEXT,
@@ -11,12 +19,6 @@ CREATE TABLE posts (
   FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
-CREATE TABLE users(
-  id SERIAL PRIMARY KEY,
-  name TEXT,
-  email TEXT,
-  password_digest TEXT
-);
 
 CREATE TABLE reviews(
   id SERIAL PRIMARY KEY,
