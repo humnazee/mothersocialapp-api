@@ -12,19 +12,19 @@ CREATE TABLE users(
 CREATE TABLE posts (
   id SERIAL PRIMARY KEY,
   user_id INT,
+  title TEXT,
   content TEXT,
-  location TEXT,
   image_url TEXT, 
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
 
-CREATE TABLE reviews(
+CREATE TABLE comments(
   id SERIAL PRIMARY KEY,
   user_id INTEGER,
   post_id INTEGER,
-  reviews TEXT
+  comments TEXT
 );
 
 CREATE TABLE likes(
