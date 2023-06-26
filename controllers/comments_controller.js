@@ -17,7 +17,7 @@ router.post('/', (req, res) => {
   const comment = req.body.comment
 
   Comment
-    .create(post_id, user_id, comment)
+    .create(post_id, user_id, comments)
     .then(comment => res.json(comment))
 })
 

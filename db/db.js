@@ -1,6 +1,6 @@
 const pg = require('pg')
 
-// change this to your actual local database name
+
 const localDbName = 'social_app'
 
 let db;

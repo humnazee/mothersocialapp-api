@@ -1,0 +1,20 @@
+.post > img {
+    width: 100%;
+}
+
+.post h2 {
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+
+.post h2:hover {
+    color: #208b57;
+}
+
+.post > form {
+    display: block;
+}
+
+.post > p {
+    color: #565b4e;
+}

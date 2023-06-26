@@ -1,0 +1,24 @@
+.comment {
+    margin: 1rem 0;
+    padding: 0 0.5rem;
+    border: 2px dashed #8dc149;
+}
+
+.comment > p {
+    margin: 0.5rem 0;
+}
+
+.material-symbols-outlined {
+    color: #565b4e;
+    cursor: pointer;
+}
+
+.material-symbols-outlined.delete:hover {
+    color: #d57f71;
+    cursor: pointer;
+}
+
+.material-symbols-outlined.edit:hover {
+    color: #86dfb4;
+    cursor: pointer;
+}

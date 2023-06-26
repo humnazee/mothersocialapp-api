@@ -17,8 +17,8 @@ const Post = {
       .then(dbRes => dbRes.rows)
   },
 
-  grabPostLocations: (post_id) => {
-    const sql = `SELECT * FROM posts WHERE location = '$1'`
+  grabPostTitles: (post_id) => {
+    const sql = `SELECT * FROM posts WHERE title = '$1'`
   
     return db
       .query(sql, [post_id])

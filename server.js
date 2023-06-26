@@ -1,5 +1,6 @@
-const express = require('express')
+const express = require('express');
 require('dotenv').config();
+const path = require('path');
 // middlewares
 const logger = require('./middlewares/logger')
 const sessions = require('./middlewares/sessions')
@@ -20,13 +21,19 @@ app.listen(port, () => console.log(`listening on http://localhost:${port}`))
 
 
 // middleware to send back our SPA (Single-Page Application)
-app.use(sessions)
-app.use(express.static('client'))
-app.use(express.json())
+app.use(sessions);
+app.use(express.static('client'));
+app.use(express.json());
 
 
 // middleware function to log request info in the terminal
-app.use(logger)
+// Middleware function to log request info in the terminal
+app.use(logger);
+
+// Render index.html when accessing the root domain
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client', 'index.html'));
+});
 app.use('/api/posts', postsController)
 app.use('/api/comments', commentsController)
 app.use('/api/sessions', sessionsController)

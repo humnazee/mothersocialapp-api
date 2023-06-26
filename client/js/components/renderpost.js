@@ -1,0 +1,1 @@
+function renderpost(){console.log('I am going to write new post')}

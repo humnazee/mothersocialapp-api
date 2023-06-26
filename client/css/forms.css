@@ -1,0 +1,79 @@
+.search-bar {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    margin-bottom: 0.75rem;
+}
+
+.search-bar > input, 
+.log-in > form > fieldset > input, 
+.sign-up > form > fieldset > input,
+.comment-form > input {
+    border: 2px solid #208b57;
+    padding: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+.search-bar > input:focus,
+.log-in > form > fieldset > input:focus, 
+.sign-up > form > fieldset > input:focus,
+.comment-form > input:focus {
+    outline: none;
+    border: 2px solid #208b57;
+}
+
+.search-bar > button, 
+.log-in > form > button, 
+.log-out > button, 
+.sign-up > form > button,
+.comment-form > button {
+    color: #FFFFFF;
+    font-size: 1rem;
+    font-weight: 300;
+    background-color: #208b57;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.search-bar > button:hover, 
+.log-in > form > button:hover, 
+.log-out > button:hover, 
+.sign-up > form > button:hover,
+.comment-form > button:hover {
+    color: #0a4d2b;
+    font-size: 1rem;
+    font-weight: 300;
+    background-color: #8dc149;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.log-in > form > fieldset,
+.sign-up > form > fieldset {
+    width: 100%;
+    border: none;
+    padding: 0;
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.log-in > form > fieldset > label,
+.sign-up > form > fieldset > label {
+    margin-bottom: 0.5rem;
+    color: #0a4d2b;
+}
+
+.comment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.comment-form > button {
+    width: fit-content;
+}
+
+
