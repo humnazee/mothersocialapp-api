@@ -1,4 +1,5 @@
 function renderSignUp() {
+  console.log('I am sign up')
     document.querySelector('#page').innerHTML = `
       <section class='sign-up'>
         <form action="" onSubmit="signUp(event)">

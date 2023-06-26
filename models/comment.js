@@ -2,7 +2,7 @@ const db = require('../db/db')
 
 const Comment = {
   findAll: () => {
-    const sql = `SELECT comments.user_id, comments.post_id, comments.comments, comments.id, users.email FROM comments INNER JOIN users ON users.id = comments.user_id;`
+    const sql = `SELECT comments.user_id, comments.post_id, comments.comment, comments.id, users.email FROM comments INNER JOIN users ON users.id = comments.user_id;`
 
     return db
       .query(sql)
