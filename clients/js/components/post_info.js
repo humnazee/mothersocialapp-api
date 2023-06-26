@@ -10,7 +10,7 @@ async function renderPostInfo(post_id) {
         <header>
           <h2>${postpost_image_url}</h2>
         </header>
-        <p>${post.location}</p>
+        <p>${post.title}</p>
         <p>${post.content}(${post.created_at})</p>
       </section>
     `;

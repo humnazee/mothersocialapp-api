@@ -12,10 +12,18 @@ fetch('/api/sessions')
       }
   })
 
-  fetch('/api/posts')
+fetch('/api/posts')
     .then(res => res.json())
     .then(posts => {
         state.posts = posts
         renderpostList()
         renderNav()
     })
+
+fetch('/api/comments')
+    .then(res => res.json())
+    .then(comments => {
+       state.comments = comments
+       console.log(state.comments)
+})
+

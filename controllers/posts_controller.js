@@ -19,11 +19,11 @@ router.get('/', (req, res) => {
       .then(post => res.json(post))
   })
   
-  router.get('/:location', (req, res) => {
-    const location = req.params.location
+  router.get('/:title', (req, res) => {
+    const title = req.params.title
   
     Post
-      .grabPostLocation(location)
-      .then(location => res.json(location))
+      .grabPostTitle(title)
+      .then(title => res.json(title))
   })
   module.exports = router
