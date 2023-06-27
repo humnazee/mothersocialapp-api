@@ -39,6 +39,30 @@ function renderSearch() {
   `;
   renderEmptyCommentList();
 }
+
+function handleLike(postId) {
+  fetch(`/posts/${postId}/like`, { method: 'POST' })
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error('Failed to like post');
+      }
+    })
+    .then(updatedPost => {
+      const post = state.posts.find(p => p.id === postId);
+      if (post) {
+        post.likes = updatedPost.likes;
+        const postElement = document.querySelector(`.post[data-id="${postId}"] .likes-count`);
+        if (postElement) {
+          postElement.textContent = post.likes;
+        }
+      }
+    })
+    .catch(error => {
+      console.error(`Error liking post: ${error}`);
+    });
+}
   
   function renderSearchResult(event) {
     event.preventDefault();
