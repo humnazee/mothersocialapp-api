@@ -22,8 +22,12 @@ function renderPostList() {
       </header>
       <img src="${post.image_url}" alt="">
       <p>${post.created_at}</p>
-      
-    </section>
+      <form class="comment-form" onsubmit="addComment(event, ${post.id})">
+      <input type="text" name="comment" placeholder="Add a comment">
+      <button type="submit">Submit</button>
+    </form>
+    <div id="comments-${post.id}"></div>
+  </section>
   `).join('');
   
   renderEmptyCommentList();
