@@ -2,7 +2,15 @@ const db = require('../db/db');
 
 class Post {
   static findAll() {
-    const sql = 'SELECT * FROM posts';
+    const sql = `SELECT DISTINCT p.*, COALESCE(l.likes_count, 0) AS likes_count, c.user_id, c.comment
+    FROM posts p
+    LEFT JOIN (
+      SELECT post_id, COUNT(*) AS likes_count
+      FROM likes
+      GROUP BY post_id
+    ) l ON p.id = l.post_id
+    LEFT JOIN comments c ON p.id = c.post_id;
+    `;
     return db.query(sql).then((dbRes) => dbRes.rows);
   }
 
