@@ -1,8 +1,24 @@
 .comment {
-    margin: 1rem 0;
     padding: 0 0.5rem;
-    border: 2px dashed #8dc149;
+    border: 2px dashed #8315cc;
+    list-style-type: none;
+    width: 300px;
+    margin: 0.5rem;
 }
+.comments {
+    display: flex;
+    flex-wrap: wrap;
+  }
+   
+  .comments ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .comments li {
+    margin-bottom: 0.5rem;
+  }
+  
 
 .comment > p {
     margin: 0.5rem 0;
@@ -16,4 +32,8 @@
     color: #d3d8cb;
     cursor: pointer;
   }
-  
+  .commentlist {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 1rem;
+  }

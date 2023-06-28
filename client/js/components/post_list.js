@@ -4,7 +4,7 @@ function renderPostList() {
   postListDOM.innerHTML = state.posts.map(post => `
     <section class="post" data-id="${post.id}">
       <header>
-        <h2 onClick="renderPostInfo(${post.title})">${post.title}</h2>
+        <h2 onClick="renderPostInfo(${post.title})"></h2>
       </header>
       <div class="card">
   	<div class="card-img">
@@ -20,19 +20,19 @@ function renderPostList() {
       <span id="likeCount-{{ post.id }}" class="like-count"></span>
       </div>
     </div>
-  <div class="card-footer">
+    <div id="card-footer">
     <form class="comment-form" onsubmit="addComment(event, ${post.id})">
-      <input type="text" name="comment" placeholder="Add a comment">
-      <button type="submit">Submit</button>
+    <input type="text" name="comment" placeholder="Add a comment">
+    <button type="submit">Submit</button>
     </form>
-    <div id="post-1">
-  <div class="comments">
-    <!-- Comments will be rendered here -->
+    <div class="comments">
+    <ul id="comments-${post.id}-list">
+    </ul>
+    </div>
   </div>
 </div>
-    <div id="comments-${post.id}"></div>
-    </div>
-  </section>
+</section>
+
   `).join('');
   
 renderEmptyCommentList();

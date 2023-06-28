@@ -22,7 +22,7 @@
     border: 2px solid rgb(104, 143, 4);
 }
 
-.search-bar > button, 
+.search-bar > button,
 .log-in > form > button, 
 .log-out > button, 
 .sign-up > form > button,
@@ -45,7 +45,7 @@
     color: #f5f2f2;
     font-size: 1rem;
     font-weight: 300;
-    background-color:rgb(85, 117, 4);
+    background-color:rgb(70, 97, 2);
     border: none;
     padding: 0.5rem;
     cursor: pointer;
@@ -77,4 +77,16 @@
     width: fit-content;
 }
 
-
+.like-button {
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: rgb(104, 143, 4);
+    border-radius: 3px;
+  }
+  
+  .like-button:hover {
+    background-color:rgb(70, 97, 2);
+  }

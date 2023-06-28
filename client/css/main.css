@@ -34,7 +34,7 @@ body {
   li {
     flex: 1;
     height: 66px;
-    color: rgb(104, 143, 4);
+    color: rgb(108, 136, 21);
     text-shadow: 2px 2px 4px#efece0;
   }
   
@@ -48,11 +48,10 @@ body {
     display: block;
     position: relative;
     text-align: centre;
-    color: rgb(12, 14, 12);
+    color: rgb(13, 12, 14);
     padding: 23px;
   }
  
   .navigation li:not(:first-child){
       border-left: 2px solid #155c6d;
-  
   }
