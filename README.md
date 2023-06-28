@@ -16,6 +16,15 @@ Mama Media is a social media app designed specifically for mothers, providing a 
 
 -Post Likes: Users can show their appreciation for a post by liking it. The number of likes a post receives is visible to other users, providing a sense of validation and support.
 
+## In-app screenshots:
+https://ibb.co/2tdvk3P
+
+https://ibb.co/LYFhkMH
+
+https://ibb.co/6BB8TT2
+
+
+
 ## :User Stories
 -As a user and as a mother, I want to share my experiences and connect with other mothers who can understand and relate to my journey.
 
