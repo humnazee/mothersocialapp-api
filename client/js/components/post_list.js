@@ -4,14 +4,14 @@ function renderPostList() {
   postListDOM.innerHTML = state.posts.map(post => `
     <section class="post" data-id="${post.id}">
       <header>
-        <h2 onClick="renderPostInfo(${post.title})">${post.title}</h2>
+        <h2 onClick="renderPostInfo)">${post.title}</h2>
       </header>
       <div class="card">
   	<div class="card-img">
  <img src="${post.image_url}" alt="">
      </div> 
 <div class="card-body">
-   <h4 onClick="renderPostInfo(${post.title})">${post.title}</h4>
+   <h4 onClick="renderPostInfo)">${post.title}</h4>
   <p>${post.content}<p>
   <div class="post-footer">
       <button id="likeButton-{{ post.id }}" class="like-button" onclick="handleLikeButtonClick('{{ post.id }}')">
@@ -54,14 +54,21 @@ function renderSearch() {
 
   function renderSearchResult(event) {
     event.preventDefault();
-    const input = document.querySelector('.search-bar input').value;
+    const input = document.querySelector('.search-bar input').value.trim();
+
+  if (input === '') {
+    const errorMessage = 'Please enter a search query';
+    renderErrorMessage(errorMessage);
+    return;
+   }
+
     const filteredPosts = state.posts.filter(post => post.title && post.title.toLowerCase().includes(input.toLowerCase()));
   
     const postListDOM = document.querySelector('#page');
     postListDOM.innerHTML = filteredPosts.map(post => `
       <section class="post" data-id="${post.id}">
         <header>
-          <h2 onClick="renderPostInfo('${post.title}')">${post.title}</h2>
+          <h2 onClick="renderPostInfo"></h2>
         </header>
         <div class="card">
           <div class="card-img">
@@ -93,7 +100,15 @@ function renderSearch() {
     renderEmptyCommentList();
   }
 
-
+  function renderErrorMessage(message) {
+    const errorMessageElement = document.createElement('div');
+    errorMessageElement.classList.add('error-message');
+    errorMessageElement.textContent = message;
+  
+    const pageContainer = document.querySelector('#page');
+    pageContainer.innerHTML = '';
+    pageContainer.appendChild(errorMessageElement);
+  }
 
 
 

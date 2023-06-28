@@ -15,6 +15,7 @@ function renderpost(){
             <label for="image">Image URL:</label>
             <input type="text" name="image_url" id="image_url">
           </fieldset>
+          <div id="error-message"></div>
           <button>Add Post</button>
         </form>
       </section>
@@ -28,6 +29,14 @@ function createPost(event) {
   const title = form.title.value;
   const content = form.content.value;
   const image_url = form.image_url.value;
+  const errorMessageElement = document.getElementById('error-message');
+
+  
+  if (content.trim() === '') {
+    // Display an error message if the content field is empty
+    errorMessageElement.textContent = 'Please fill in the content field';
+    return;
+  }
 
   fetch('/api/posts', {
     method: 'POST',

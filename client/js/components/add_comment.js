@@ -61,13 +61,15 @@
   
 
 function renderCommentList(postId) {
-    const postDOM = document.querySelector(`#post-${postId}`);
-    const commentListDOM = postDOM.querySelector('.comments');
+    const postDOM = document.querySelector(`#comments-${postId}`);
+    console.log(postDOM)
+    console.log(postId)
+    // const commentListDOM = postDOM.querySelector('.comments');
   
     const comments = state.comments.filter(comment => comment.post_id === postId);
   
     if (comments.length > 0) {
-      commentListDOM.innerHTML = `
+      postDOM.innerHTML = `
         <h3>Comments:</h3>
         <ul>
           ${comments.map(comment => `<li>${comment.comment}</li>`).join('')}

@@ -12,13 +12,3 @@
     color: #d3d8cb;
     cursor: pointer;
 }
-
-.material-symbols-outlined.delete:hover {
-    color: #d57f71;
-    cursor: pointer;
-}
-
-.material-symbols-outlined.edit:hover {
-    color: #86dfb4;
-    cursor: pointer;
-}
