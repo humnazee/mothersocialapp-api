@@ -34,6 +34,7 @@ Mama Media is a social media app designed specifically for mothers, providing a 
 - JavaScript
 - CSS
 - HTML
+- Node.js
 - Node packages (dependencies): These are libraries used in Node.js applications to add specific functionality. The packages used in the Weather Fit app are: 
     - bcrypt: A package for securely hashing and comparing passwords.
     - express: A fast and minimalist web application framework for Node.js.
