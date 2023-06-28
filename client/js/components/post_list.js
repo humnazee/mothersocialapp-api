@@ -4,7 +4,7 @@ function renderPostList() {
   postListDOM.innerHTML = state.posts.map(post => `
     <section class="post" data-id="${post.id}">
       <header>
-        <h2 onClick="renderPostInfo)">${post.title}</h2>
+        <h2 onClick="renderPostInfo(${post.title})">${post.title}</h2>
       </header>
       <div class="card">
   	<div class="card-img">
@@ -68,7 +68,7 @@ function renderSearch() {
     postListDOM.innerHTML = filteredPosts.map(post => `
       <section class="post" data-id="${post.id}">
         <header>
-          <h2 onClick="renderPostInfo"></h2>
+          <h2 onClick="renderPostInfo('${post.title}')">${post.title}</h2>
         </header>
         <div class="card">
           <div class="card-img">

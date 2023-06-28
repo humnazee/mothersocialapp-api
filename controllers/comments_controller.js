@@ -5,7 +5,6 @@ const router = express.Router()
 const Comment = require('../models/comment')
 
 
-
 // routes
 router.get('/', (req, res) => {
   Comment

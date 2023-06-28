@@ -35,7 +35,7 @@ function renderLogin() {
           renderError(res.error)
         } else {
           state.loggedInUser = res
-          renderDepotList()
+          renderPostList()
           renderNav()
         }
       })

@@ -1,3 +1,49 @@
+// const db = require('../db/db')
+
+// const Comment = {
+//   findAll: () => {
+//     const sql = "SELECT * FROM comments ";
+
+//     return db
+//       .query(sql)
+//       .then(dbRes => dbRes.rows);
+//   },
+
+//   create: (comment, user_id, post_id) => {
+//     const sql = `
+//       INSERT INTO comments(comment, user_id, post_id)
+//       VALUES ($1, $2, $3)
+//       RETURNING *
+//     `;
+
+//     return db
+//       .query(sql, [(comment, user_id, post_id)])
+//       .then(dbRes => dbRes.rows[0])
+//   },
+
+
+  
+//   update: (user_id, comment, commentId) => {
+//     const sql = `
+//       UPDATE comments SET user_id =$1, comment = $2 WHERE id = $3
+//       RETURNING *
+//     `
+
+//     return db
+//       .query(sql, [user_id, comment, commentId])
+//       .then(dbRes => dbRes.rows[0])
+//   },
+
+//   delete: (commentId) => {
+//     const sql = 'DELETE FROM comments WHERE id = $1'
+
+//     return db.query(sql, [commentId])
+//   }
+// }
+
+// module.exports = Comment
+
+
 const db = require('../db/db')
 
 class Comment {
