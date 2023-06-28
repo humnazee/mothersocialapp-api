@@ -2,6 +2,30 @@
 Mama Media is a social media app designed specifically for mothers, providing a platform for them to share their experiences, seek advice, and connect with other mothers. The app allows users to create posts, comment on each other's posts, search for posts by title, and like posts to show appreciation and support. With mama media, mothers can form a supportive community and share their joys and challenges of motherhood.
 ## :computer: [Click here](https://motherssocial.onrender.com/) to see my live project!
 ## :page_facing_up: About
+-As a user and as a mother, I want to share my experiences and connect with other mothers who can understand and relate to my journey.
+
+-As a new mother, I need a platform where I can seek advice and guidance from more experienced mothers.
+
+-I want to be able to express my thoughts, joys, challenges, and concerns about motherhood and receive supportive comments and feedback.
+-I would like to search for posts related to specific topics or issues that I am interested in or need assistance with.
+
+-I want to show my appreciation for posts that resonate with me or provide valuable insights by liking them.
+
+-I expect a user-friendly and intuitive interface that makes it easy to navigate the app, create posts, and engage with other users.
+
+-I want the flexibility to access the app from various devices, such as desktops, mobile phones, and tablets, to stay connected and participate in discussions wherever I am.
+
+## In-app screenshots:
+https://ibb.co/2tdvk3P
+
+https://ibb.co/LYFhkMH
+
+https://ibb.co/6BB8TT2
+
+## github link
+https://github.com/humnazee/mothersocialapp-api
+
+## :User Stories
 -User Registration: Users can sign up for an account by providing their name, email address, and creating a secure password. The registration information is securely stored in the app's database.
 
 -User Login: Registered users can log in to their accounts using their email and password. The app validates the login credentials and grants access to personalized features and data.
@@ -16,28 +40,9 @@ Mama Media is a social media app designed specifically for mothers, providing a 
 
 -Post Likes: Users can show their appreciation for a post by liking it. The number of likes a post receives is visible to other users, providing a sense of validation and support.
 
-## In-app screenshots:
-https://ibb.co/2tdvk3P
-
-https://ibb.co/LYFhkMH
-
-https://ibb.co/6BB8TT2
 
 
 
-## :User Stories
--As a user and as a mother, I want to share my experiences and connect with other mothers who can understand and relate to my journey.
-
--As a new mother, I need a platform where I can seek advice and guidance from more experienced mothers.
-
--I want to be able to express my thoughts, joys, challenges, and concerns about motherhood and receive supportive comments and feedback.
--I would like to search for posts related to specific topics or issues that I am interested in or need assistance with.
-
--I want to show my appreciation for posts that resonate with me or provide valuable insights by liking them.
-
--I expect a user-friendly and intuitive interface that makes it easy to navigate the app, create posts, and engage with other users.
-
--I want the flexibility to access the app from various devices, such as desktops, mobile phones, and tablets, to stay connected and participate in discussions wherever I am.
 
 ## :rocket: Cool tech
 - JavaScript
