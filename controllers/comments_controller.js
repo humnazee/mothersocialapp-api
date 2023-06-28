@@ -4,13 +4,14 @@ const router = express.Router()
 // models
 const Comment = require('../models/comment')
 
+
+
 // routes
 router.get('/', (req, res) => {
   Comment
     .findAll()
     .then(comments => res.json(comments))
 })
-
 router.post('/', (req, res) => {
   const { post_id, comment } = req.body;
   const newComment = new Comment(post_id, comment);
@@ -23,6 +24,8 @@ router.post('/', (req, res) => {
       res.status(500).json({ error: 'Failed to add comment' });
     });
 });
+
+
 
 router.delete('/:id', (req, res) => {
   const commentId = req.params.id

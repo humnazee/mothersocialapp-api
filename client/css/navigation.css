@@ -1,8 +1,8 @@
-
+/* 
 .header-nav {
     margin: 0 auto;
     /* padding: 0 1rem; */
-}
+/* }
 
 .header-nav ul {
     display: flex;
@@ -16,7 +16,7 @@
 
 .header-nav li {
     cursor: pointer;
-}
+} */ */
 
 .search-bar {
     display: flex;

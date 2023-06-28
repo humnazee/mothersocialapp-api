@@ -14,6 +14,22 @@ class Post {
     return db.query(sql).then((dbRes) => dbRes.rows);
   }
 
+  static likePost(post_id) {
+    const sql = 'INSERT INTO likes (post_id) VALUES ($1)';
+    return db.query(sql, [post_id]).then((dbRes) => dbRes.rows[0]);
+  }
+
+  static unlikePost(post_id) {
+    const sql = 'DELETE FROM likes WHERE post_id = $1';
+    return db.query(sql, [post_id]);
+  }
+
+  static async checkPostLiked(post_id) {
+    const sql = 'SELECT COUNT(*) AS like_count FROM likes WHERE post_id = $1';
+    const result = await db.query(sql, [post_id]);
+    return result.rows[0].like_count > 0;
+  }
+
   static createPost(title, content, image_url) {
     const sql =
       'INSERT INTO posts (title, content, image_url) VALUES ($1, $2, $3) RETURNING *';

@@ -14,15 +14,16 @@ class Comment {
   }
 }
 
+
   update: (user_id, comment, commentId) => {
     const sql = `
       UPDATE comments SET user_id =$1, comment = $2 WHERE id = $3
       RETURNING *
     `
-
     return db
       .query(sql, [user_id, comment, commentId])
       .then(dbRes => dbRes.rows[0])
   }
   
+
 module.exports = Comment

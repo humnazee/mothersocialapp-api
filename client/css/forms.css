@@ -9,7 +9,7 @@
 .log-in > form > fieldset > input, 
 .sign-up > form > fieldset > input,
 .comment-form > input {
-    border: 2px solid #208b57;
+    border: 2px solid rgb(210, 223, 175);
     padding: 0.5rem;
     margin-right: 0.5rem;
 }
@@ -19,7 +19,7 @@
 .sign-up > form > fieldset > input:focus,
 .comment-form > input:focus {
     outline: none;
-    border: 2px solid #208b57;
+    border: 2px solid rgb(104, 143, 4);
 }
 
 .search-bar > button, 
@@ -30,7 +30,7 @@
     color: #FFFFFF;
     font-size: 1rem;
     font-weight: 300;
-    background-color: #208b57;
+    background-color: rgb(104, 143, 4);
     border: none;
     padding: 0.5rem;
     cursor: pointer;
@@ -41,10 +41,10 @@
 .log-out > button:hover, 
 .sign-up > form > button:hover,
 .comment-form > button:hover {
-    color: #0a4d2b;
+    color: #f5f2f2;
     font-size: 1rem;
     font-weight: 300;
-    background-color: #8dc149;
+    background-color: #ffd3de;
     border: none;
     padding: 0.5rem;
     cursor: pointer;
@@ -63,7 +63,7 @@
 .log-in > form > fieldset > label,
 .sign-up > form > fieldset > label {
     margin-bottom: 0.5rem;
-    color: #0a4d2b;
+    color: #020202;
 }
 
 .comment-form {

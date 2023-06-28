@@ -1,37 +1,44 @@
-// function renderPostList() {
-//     const postListDOM = document.querySelector('#page')
-  
-//     postListDOM.innerHTML = state.posts.map(post => `
-//       <section class="post" data-id="${post.post_id}">
-//         <header>
-//           <h2 onClick="renderPostInfo(${post.post_id})">${post.post_created_at}</h2>
-//         </header>
-//         <p>${post.title} ${post.content}</p>
-//       </section>
-//   `).join('');
-//   renderEmptyCommentList ();
-//   }
-  
 function renderPostList() {
   const postListDOM = document.querySelector('#page');
 
   postListDOM.innerHTML = state.posts.map(post => `
     <section class="post" data-id="${post.id}">
       <header>
-        <h2 onClick="renderPostInfo(${post.title})">${post.content}</h2>
+        <h2 onClick="renderPostInfo(${post.title})">${post.title}</h2>
       </header>
-      <img src="${post.image_url}" alt="">
-      <p>${post.created_at}</p>
-      <form class="comment-form" onsubmit="addComment(event, ${post.id})">
+      <div class="card">
+  	<div class="card-img">
+ <img src="${post.image_url}" alt="">
+     </div> 
+<div class="card-body">
+   <h4 onClick="renderPostInfo(${post.title})">${post.title}</h4>
+  <p>${post.content}<p>
+  <div class="post-footer">
+      <button id="likeButton-{{ post.id }}" class="like-button" onclick="handleLikeButtonClick('{{ post.id }}')">
+        Like
+      </button>
+      <span id="likeCount-{{ post.id }}" class="like-count"></span>
+      </div>
+    </div>
+  <div class="card-footer">
+    <form class="comment-form" onsubmit="addComment(event, ${post.id})">
       <input type="text" name="comment" placeholder="Add a comment">
       <button type="submit">Submit</button>
     </form>
+    <div id="post-1">
+  <div class="comments">
+    <!-- Comments will be rendered here -->
+  </div>
+</div>
     <div id="comments-${post.id}"></div>
+    </div>
   </section>
   `).join('');
   
-  renderEmptyCommentList();
+renderEmptyCommentList();
 }
+
+
 
 
 function renderSearch() {
@@ -44,45 +51,198 @@ function renderSearch() {
   renderEmptyCommentList();
 }
 
-function handleLike(postId) {
-  fetch(`/posts/${postId}/like`, { method: 'POST' })
-    .then(response => {
-      if (response.ok) {
-        return response.json();
-      } else {
-        throw new Error('Failed to like post');
-      }
-    })
-    .then(updatedPost => {
-      const post = state.posts.find(p => p.id === postId);
-      if (post) {
-        post.likes = updatedPost.likes;
-        const postElement = document.querySelector(`.post[data-id="${postId}"] .likes-count`);
-        if (postElement) {
-          postElement.textContent = post.likes;
-        }
-      }
-    })
-    .catch(error => {
-      console.error(`Error liking post: ${error}`);
-    });
-}
-  
+
   function renderSearchResult(event) {
     event.preventDefault();
     const input = document.querySelector('.search-bar input').value;
-    posts = state.posts;
-    const filteredPosts = posts.filter(post => post.title && post.title.toLowerCase().includes(input));
-    console.log(filteredPosts);
-    document.querySelector('#page').innerHTML = `
-    ${filteredPosts[0].title}
-  `;
+    const filteredPosts = state.posts.filter(post => post.title && post.title.toLowerCase().includes(input.toLowerCase()));
   
-  
+    const postListDOM = document.querySelector('#page');
+    postListDOM.innerHTML = filteredPosts.map(post => `
+      <section class="post" data-id="${post.id}">
+        <header>
+          <h2 onClick="renderPostInfo('${post.title}')">${post.title}</h2>
+        </header>
+        <div class="card">
+          <div class="card-img">
+            <img src="${post.image_url}" alt="">
+          </div>
+          <div class="card-body">
+            <h4 onClick="renderPostInfo('${post.title}')">${post.title}</h4>
+            <p>${post.content}</p>
+            <div class="post-footer">
+              <button id="likeButton-${post.id}" class="like-button" onclick="handleLikeButtonClick('${post.id}')">
+                Like
+              </button>
+              <span id="likeCount-${post.id}" class="like-count">${post.likes || 0}</span>
+            </div>
+          </div>
+          <div class="card-footer">
+            <form class="comment-form" onsubmit="addComment(event, ${post.id})">
+              <input type="text" name="comment" placeholder="Add a comment">
+              <button type="submit">Submit</button>
+            </form>
+            <div id="comments-${post.id}" class="comments">
+              <!-- Comments will be rendered here -->
+            </div>
+          </div>
+        </div>
+      </section>
+    `).join('');
+    
+    renderEmptyCommentList();
+  }
 
 
 
-  
 
+
+
+function handleLikeButtonClick(postId) {
+  const likeButton = document.getElementById(`likeButton-${postId}`);
   
+  // Check if the post is already liked
+  const isLiked = likeButton.classList.contains('liked');
+  
+  if (isLiked) {
+    fetch(`/api/posts/${postId}/unlike`, {
+      method: 'POST',
+    })
+      .then((res) => {
+        if (res.ok) {
+          likeButton.classList.remove('liked');
+          updateLikeCount(postId, false); // Update the like count
+        } else {
+          throw new Error('Failed to unlike post');
+        }
+      })
+      .catch((error) => {
+        console.error('Error unliking post:', error);
+      });
+  } else {
+    fetch(`/api/posts/${postId}/like`, {
+      method: 'POST',
+    })
+      .then((res) => {
+        if (res.ok) {
+          likeButton.classList.add('liked');
+          updateLikeCount(postId, true); // Update the like count
+        } else {
+          throw new Error('Failed to like post');
+        }
+      })
+      .catch((error) => {
+        console.error('Error liking post:', error);
+      });
+  }
+}
+
+// Function to update the like count dynamically
+function updateLikeCount(postId, isLiked) {
+  const likeCountElement = document.getElementById(`likeCount-${postId}`);
+  const currentLikeCount = parseInt(likeCountElement.textContent);
+  
+  if (isLiked) {
+    likeCountElement.textContent = currentLikeCount + 1;
+  } else {
+    likeCountElement.textContent = currentLikeCount - 1;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+function renderPostList() {
+  const postListDOM = document.querySelector('#page');
+
+  postListDOM.innerHTML = state.posts.map(post => `
+    <section class="post" data-id="${post.id}">
+      <header>
+        <h2 onClick="renderPostInfo(${post.id})">${post.title}</h2>
+      </header>
+      <div class="card">
+        <div class="card-img">
+          <img src="${post.image_url}" alt="">
+        </div>
+        <div class="card-body">
+          <h4 onClick="renderPostInfo(${post.id})">${post.title}</h4>
+          <p>${post.content}</p>
+          <div class="post-footer">
+            <button id="likeButton-${post.id}" class="like-button" onclick="handleLikeButtonClick(${post.id})">
+              Like
+            </button>
+            <span id="likeCount-${post.id}" class="like-count">${post.likes || 0}</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <form class="comment-form" onsubmit="addComment(event, ${post.id})">
+            <input type="text" name="comment" placeholder="Add a comment">
+            <button type="submit">Submit</button>
+          </form>
+          <div id="comments-${post.id}" class="comments">
+            <!-- Comments will be rendered here -->
+          </div>
+        </div>
+      </div>
+    </section>
+  `).join('');
+
+  renderEmptyCommentList();
+}
+
+function handleLikeButtonClick(postId) {
+  const likeButton = document.getElementById(`likeButton-${postId}`);
+
+  // Check if the post is already liked
+  const isLiked = likeButton.classList.contains('liked');
+
+  if (isLiked) {
+    fetch(`/api/posts/${postId}/unlike`, {
+      method: 'POST',
+    })
+      .then((res) => {
+        if (res.ok) {
+          likeButton.classList.remove('liked');
+          updateLikeCount(postId, false); // Update the like count
+        } else {
+          throw new Error('Failed to unlike post');
+        }
+      })
+      .catch((error) => {
+        console.error('Error unliking post:', error);
+      });
+  } else {
+    fetch(`/api/posts/${postId}/like`, {
+      method: 'POST',
+    })
+      .then((res) => {
+        if (res.ok) {
+          likeButton.classList.add('liked');
+          updateLikeCount(postId, true); // Update the like count
+        } else {
+          throw new Error('Failed to like post');
+        }
+      })
+      .catch((error) => {
+        console.error('Error liking post:', error);
+      });
+  }
+}
+
+// Function to update the like count dynamically
+function updateLikeCount(postId, isLiked) {
+  const likeCountElement = document.getElementById(`likeCount-${postId}`);
+  const currentLikeCount = parseInt(likeCountElement.textContent);
+
+  if (isLiked) {
+    likeCountElement.textContent = isNaN(currentLikeCount) ? 1 : currentLikeCount + 1;
+  } else {
+    likeCountElement.textContent = isNaN(currentLikeCount) ? 0 : currentLikeCount - 1;
+  }
 }
